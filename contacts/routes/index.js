@@ -8,12 +8,14 @@ router.get('/', function(req, res) {
   pgconn.query("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'contacts')", function(err,results) {
     if (err) {
       console.log(err);
+      document.getElementById()
       res.render('index', { error: 'Database connection failure! '+err.stack, contacts: null, title: 'Contact List' });
     }
 
     // 'contacts' table does not exist. Show an empty table.
     else if(results.rows[0].exists == false) {
       res.render('index', { error: null, contacts: null, title: 'Contact List' });
+      
     }
 
     // 'contacts' table exists. Show the records.
